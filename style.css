@@ -1,0 +1,2295 @@
+:root {
+    /* Colors */
+    --primary-color: #003366;
+    /* Deep Navy */
+    --primary-light: #2c5282;
+    --accent-color: #00bcd4;
+    /* Cyan */
+    --accent-dark: #0097a7;
+    --highlight-color: #ff5722;
+    /* Orange */
+    --text-color: #1a1a1a;
+    --text-light: #666666;
+    --bg-light: #f8f9fa;
+    --bg-white: #ffffff;
+    --border-color: #e1e4e8;
+
+    /* Spacing */
+    --container-width: 1200px;
+    --section-padding: 80px 0;
+    --mobile-padding: 20px;
+
+    /* Shadows */
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    /* Typography */
+    --font-heading: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    --font-body: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--bg-white);
+    word-break: keep-all;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Utilities */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--mobile-padding);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    text-align: center;
+    color: var(--primary-light);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.highlight {
+    color: var(--accent-color);
+}
+
+/* Standardized Button System */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2rem;
+    /* Consistent padding */
+    border-radius: 8px;
+    /* Modern, slightly rounded corners instead of full pill for better text box harmony, or keep pill if prefered. Let's go with slightly rounded for modern feel or keep consistent pill if user likes it. User said 'design concept analysis'. Modern trend is often 8px-12px or full pill. Let's Stick to Pill for friendly feel but refine size. */
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    /* Standard readable size */
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 51, 102, 0.2);
+    /* Subtle shadow */
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 51, 102, 0.3);
+}
+
+.btn-cta {
+    background-color: var(--highlight-color);
+    color: white;
+    font-size: 1.25rem;
+    /* Larger for CTA */
+    padding: 1.1rem 3rem;
+    box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+}
+
+.btn-cta:hover {
+    background-color: #f4511e;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 87, 34, 0.4);
+}
+
+/* Secondary Button (Outline or Ghost) - useful for sub-actions */
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: #f8f9fa;
+}
+
+/* Header */
+header {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1.2;
+    text-align: left;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Hamburger - Hidden on PC by default */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 2000;
+    padding: 10px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Default Overlay - hidden on PC to prevent click blocking */
+.body-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1200;
+}
+
+/* Hero Section */
+.hero {
+    height: 95vh;
+    min-height: 800px;
+    background: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 51, 102, 0.7)),
+        url('assets/hero.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding-top: 60px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.hero-content .subheading {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #e0f7fa;
+}
+
+.hero-badge {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    display: inline-block;
+    margin-bottom: 4rem;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
+}
+
+/* Recruitment Info Section */
+.recruitment-section {
+    background-color: #f9fafb;
+    padding: 6rem 0;
+}
+
+.recruit-premium-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
+}
+
+.recruit-premium-card {
+    background: white;
+    border-radius: 20px;
+    /* Modern cleaner radius */
+    padding: 3rem 2rem;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    /* Soft shadow */
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    overflow: hidden;
+    height: 100%;
+}
+
+.recruit-premium-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.recruit-premium-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: var(--primary-color);
+}
+
+.card-accent-1::before {
+    background: #3f51b5;
+}
+
+.card-accent-2::before {
+    background: #00bcd4;
+}
+
+.card-accent-3::before {
+    background: #ff5722;
+}
+
+.card-icon-box {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #f5f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    transition: 0.3s;
+}
+
+.recruit-premium-card:hover .card-icon-box {
+    transform: scale(1.1) rotate(5deg);
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.premium-card-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.premium-card-content {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    word-break: keep-all;
+}
+
+.premium-highlight {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: 700;
+    color: #111;
+    font-size: 1.2rem;
+}
+
+.univ-list {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    width: 100%;
+}
+
+.univ-tag {
+    background: #eef2f6;
+    padding: 0.8rem 0.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: #455a64;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Sections Common */
+.section-padding {
+    padding: var(--section-padding);
+}
+
+/* Story Section */
+.story-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.story-image {
+    position: relative;
+}
+
+.story-image img {
+    border-radius: 20px;
+    box-shadow: var(--hover-shadow);
+}
+
+.quote-box {
+    background: white;
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #555;
+    box-shadow: var(--card-shadow);
+    border-radius: 0 10px 10px 0;
+}
+
+/* Identity Section */
+/* Old Identity Styles replaced by "Refined Design Styles" section at bottom */
+/* .identity-diagram { ... } */
+
+.core-points-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.point-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 50px;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.check-icon {
+    color: var(--accent-color);
+    font-weight: 800;
+}
+
+/* Curriculum Section */
+.curriculum-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.curr-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.curr-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+    border-color: var(--accent-color);
+}
+
+.curr-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.curr-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.curr-desc {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1rem;
+    height: 4.5rem;
+    overflow: hidden;
+}
+
+.curr-target {
+    font-size: 0.9rem;
+    color: var(--primary-light);
+    font-weight: 600;
+    background: #f0f4f8;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+/* Scholarship Section */
+.math-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.math-term {
+    padding: 2rem;
+    border-radius: 15px;
+    width: 220px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 200px;
+}
+
+.term-light {
+    background: #e8eaf6;
+}
+
+.term-dark {
+    background: #003366;
+    color: white;
+    width: 250px;
+    box-shadow: 0 10px 20px rgba(0, 51, 102, 0.3);
+}
+
+.math-term h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.math-calc {
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.math-result {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #333;
+}
+
+.math-plus,
+.math-equal {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #757575;
+}
+
+.total-amount {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #00bcd4;
+    margin-top: 0.5rem;
+}
+
+/* Employment Section */
+.roadmap-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.roadmap-step {
+    background: white;
+    color: var(--text-color);
+    padding: 1.2rem 2rem;
+    border-radius: 12px;
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.roadmap-step h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+    margin-top: 0.5rem;
+}
+
+.step-badge {
+    background: var(--primary-color);
+    color: white;
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.badge-orange {
+    background: #ff5722;
+}
+
+.highlight-step {
+    background: #fff3e0;
+    border: 2px solid #ff5722;
+}
+
+.step-arrow {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1;
+}
+
+/* Reviews */
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.review-card {
+    background: white;
+    color: var(--text-color);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.reviewer {
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.company {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.company-kia {
+    background-color: #05141f;
+}
+
+.company-sh {
+    background-color: #0056b3;
+}
+
+.company-hyundai {
+    background-color: #002c5f;
+}
+
+.company-rnd {
+    background-color: #009688;
+}
+
+.review-univ {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0;
+}
+
+/* Summary Items */
+.summary-item {
+    background: rgba(46, 125, 50, 0.9);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cta-card {
+    background-color: #1a237e;
+    padding: 4rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Footer Section */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-info p {
+    margin-bottom: 0.3rem;
+}
+
+.footer-partners {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.partner-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.partner-list li {
+    font-size: 0.9rem;
+}
+
+
+/* Sub-page Specific Styles */
+.sub-intro-container {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 5rem;
+    padding: 3rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid #eee;
+}
+
+.main-catchphrase {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    word-break: keep-all;
+    line-height: 1.3;
+}
+
+.sub-catchphrase {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.intro-desc {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.process-section {
+    background-color: var(--bg-light);
+    padding: 4rem 2rem;
+    border-radius: 30px;
+    margin-bottom: 5rem;
+}
+
+.detail-list {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+}
+
+.detail-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.detail-item strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.target-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.target-item {
+    background: #e3f2fd;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.target-item:hover {
+    transform: translateY(-5px);
+    background: white;
+    box-shadow: var(--hover-shadow);
+    border-color: var(--accent-color);
+}
+
+.target-check {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.target-text {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* Curriculum Page Specific Styles */
+.track-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    align-items: stretch;
+}
+
+.track-card {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    /* Softer border */
+    border-radius: 12px;
+    padding: 1.8rem;
+    /* More breathing room */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    /* Very subtle shadow */
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.track-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+    border-color: var(--accent-color);
+    /* Highlight border on hover only */
+}
+
+.track-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 1rem;
+}
+
+.track-icon {
+    font-size: 2rem;
+}
+
+.track-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+    word-break: keep-all;
+}
+
+.track-info {
+    flex-grow: 1;
+}
+
+.track-info h4 {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+.track-info h4:first-child {
+    margin-top: 0;
+}
+
+.track-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.track-info li {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.3rem;
+    padding-left: 0.8rem;
+    position: relative;
+    line-height: 1.4;
+    word-break: keep-all;
+}
+
+.track-info li::before {
+    content: "\2022";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.curriculum-flow {
+    margin-top: 1.5rem;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.curriculum-flow h4 {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.flow-step {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 0.4rem;
+    text-align: center;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    font-weight: 500;
+    color: #444;
+}
+
+.flow-arrow {
+    text-align: center;
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+/* Main Guide Section Replaced by "Refined Guide Section" at bottom */
+/* Keeping structure for Fallback or remove if unused */
+.guide-section {
+    /* Styles moved to bottom for specificity/override */
+    margin-top: 4rem;
+}
+
+/* Scholarship Page Specific Styles */
+.scholarship-structure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.sch-box {
+    background: white;
+    border: 2px solid #e3f2fd;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 280px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.sch-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.sch-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.sch-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.sch-amount {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.sch-total {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-color);
+}
+
+.sch-plus,
+.sch-equal {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ccc;
+}
+
+.sch-result-box {
+    background: #e3f2fd;
+    border-color: var(--primary-color);
+}
+
+.sch-table-container {
+    overflow-x: auto;
+    margin: 3rem 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sch-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    text-align: center;
+}
+
+.sch-table th {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    font-weight: 600;
+}
+
+.sch-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    color: #444;
+}
+
+.sch-table tr:last-child td {
+    border-bottom: none;
+    font-weight: 700;
+    background: #f8f9fa;
+    color: var(--primary-color);
+}
+
+.sch-table tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+.condition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.condition-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-top: 4px solid var(--primary-color);
+}
+
+.condition-card h4 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.condition-card p {
+    color: #555;
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.condition-card p::before {
+    content: "\2714";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* Reviews Page Specific Styles */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.review-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.review-card::before {
+    content: '\201C';
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 8rem;
+    color: #f0f4f8;
+    font-family: serif;
+    z-index: 0;
+}
+
+.review-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+.reviewer-info h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.reviewer-meta {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.company-badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 51, 102, 0.2);
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+    transition: background-color 0.3s;
+}
+
+.company-badge:hover {
+    background-color: var(--accent-color);
+}
+
+.review-quote {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    color: #222;
+    position: relative;
+    z-index: 1;
+}
+
+.review-body {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+    position: relative;
+    z-index: 1;
+    word-break: keep-all;
+}
+
+.review-body strong {
+    color: var(--primary-color);
+    background: #e3f2fd;
+    padding: 0 2px;
+}
+
+/* FAQ Page Specific Styles */
+.faq-deadline-box {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-left: 5px solid var(--accent-color);
+}
+
+.faq-deadline-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.faq-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.faq-info-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.faq-info-card h4 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.faq-info-card p {
+    color: #555;
+    font-weight: 500;
+}
+
+.apply-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.method-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    border-top: 4px solid var(--primary-color);
+    transition: transform 0.3s;
+}
+
+.method-card:hover {
+    transform: translateY(-5px);
+}
+
+.method-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.method-steps {
+    text-align: left;
+    margin-top: 1rem;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.faq-qna-section {
+    margin-top: 4rem;
+}
+
+.faq-item {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 1.5rem;
+    background: #fcfcfc;
+    cursor: pointer;
+    font-weight: 700;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #333;
+}
+
+.faq-question:hover {
+    background: #f0f0f0;
+}
+
+.faq-answer {
+    padding: 1.5rem;
+    border-top: 1px solid #eee;
+    color: #555;
+    line-height: 1.6;
+    display: none;
+    background: #fff;
+}
+
+.faq-question::before {
+    content: 'Q.';
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+.faq-answer::before {
+    content: 'A.';
+    color: var(--accent-color);
+    font-weight: 700;
+    margin-right: 0.5rem;
+}
+
+.final-cta-box {
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+    border-radius: 20px;
+    margin-top: 5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.final-cta-box h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+.final-cta-box p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* Success Points Section */
+.success-points-container {
+    background-color: #f8f9fa;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    margin-top: 4rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.success-points-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.success-points-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.success-point-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 5px solid var(--accent-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+
+.success-point-card:hover {
+    transform: translateY(-5px);
+}
+
+.success-point-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.success-point-card h4::before {
+    content: ' ';
+    margin-right: 0.5rem;
+}
+
+.success-point-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.success-summary {
+    text-align: center;
+    margin-top: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+/* Statistics Infographic */
+.stats-infographic-container {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%);
+    color: white;
+    padding: 3rem;
+    border-radius: 20px;
+    margin: 4rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ------------------------------------------------ */
+/* MOBILE OPTIMIZATION / RESPONSIVE                 */
+/* ------------------------------------------------ */
+
+.scroll-indicators {
+    display: none;
+    justify-content: center;
+    margin-top: 1.5rem;
+    gap: 8px;
+}
+
+.scroll-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ddd;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.scroll-dot.active {
+    background-color: var(--primary-color);
+    width: 24px;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+
+    /* Header & Navigation */
+    .header-container {
+        padding: 0 1.5rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+        z-index: 2000;
+        /* Increased z-index */
+        display: flex !important;
+        /* Force display flex for mobile menu */
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li a {
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+
+    /* Overlay is ONLY visible/active on mobile, handled by JS class toggle */
+    .body-overlay {
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s;
+    }
+
+    .body-overlay.active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Adjust Header Button */
+    .header-container .btn-primary {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        margin-right: 0.5rem;
+        /* Tweak spacing */
+    }
+
+    /* General Mobile Buttons */
+    .btn {
+        width: 100%;
+        /* Full width on mobile often better for touch targets in content areas */
+        max-width: 320px;
+        /* Don't get too wide on tablets */
+        display: flex;
+        /* Ensure centering works with flex */
+        margin: 0 auto;
+        /* Center if max-width applies */
+        padding: 1rem 1.5rem;
+        /* Comfortable touch area */
+        font-size: 1.05rem;
+    }
+
+    /* Exception for inline buttons if any, or specific contexts like header (already handled above) */
+    .hero-content .btn {
+        width: auto;
+        /* Hero buttons might want to be auto width or stack */
+        min-width: 200px;
+    }
+
+    /* Grids -> Horizontal Scroll Snap */
+    .recruit-premium-grid,
+    .curriculum-grid,
+    .reviews-grid,
+    .success-points-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 2rem;
+        gap: 1rem;
+        margin-top: 2rem;
+        grid-template-columns: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Stack these grids vertically on mobile instead of horizontal scroll */
+    .track-grid,
+    .extra-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .recruit-premium-card,
+    .curr-card,
+    .review-card,
+    .success-point-card {
+        min-width: 85vw;
+        scroll-snap-align: center;
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+
+    .track-card,
+    .extra-card {
+        width: 100%;
+        /* Full width for vertical stack */
+        min-width: 0;
+    }
+
+    .scroll-indicators {
+        display: flex;
+    }
+
+    /* Layout Stacking */
+    .story-container {
+        grid-template-columns: 1fr;
+    }
+
+    .identity-diagram {
+        flex-direction: column;
+    }
+
+    .id-arrow {
+        transform: rotate(90deg);
+        margin: 0.5rem 0;
+    }
+
+    .id-plus {
+        margin: 0.5rem 0;
+    }
+
+    .id-card {
+        width: 100%;
+    }
+
+    .math-box {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .math-plus,
+    .math-equal {
+        transform: rotate(90deg);
+    }
+
+    .math-term,
+    .term-dark {
+        width: 100%;
+        height: auto;
+        padding: 1.5rem;
+    }
+
+    .detail-list,
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Typography Sizes for Mobile */
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .main-catchphrase {
+        font-size: 1.5rem;
+        line-height: 1.4;
+        word-break: keep-all;
+    }
+
+    .sub-catchphrase {
+        font-size: 1.1rem;
+    }
+
+    .intro-desc {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .section-padding {
+        padding: 3rem 0;
+    }
+
+    /* Grids -> Horizontal Scroll Snap (Unified) */
+    .recruit-premium-grid,
+    .curriculum-grid,
+    .reviews-grid,
+    .success-points-grid,
+    .extra-grid,
+    .stats-grid,
+    .scholarship-structure {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 2rem;
+        gap: 1rem;
+        margin-top: 2rem;
+        grid-template-columns: none;
+        /* Override grid */
+        flex-direction: row;
+        /* Force row */
+        justify-content: flex-start;
+        align-items: stretch;
+        /* Stretch height */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Scroll Item Sizes */
+    .recruit-premium-card,
+    .curr-card,
+    .review-card,
+    .success-point-card,
+    .extra-card,
+    .stat-item {
+        min-width: 85vw;
+        scroll-snap-align: center;
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+
+    .stat-circle {
+        margin: 0 auto 1.5rem auto;
+        /* Center circle in item */
+    }
+
+    .sch-box {
+        min-width: 80vw;
+        /* Scholarship structure items */
+        scroll-snap-align: center;
+        flex-shrink: 0;
+        margin: 0 !important;
+        /* Reset margins */
+    }
+
+    /* Hide math symbols in scroll view or adjust them */
+    .sch-plus,
+    .sch-equal {
+        display: none;
+        /* Hide operators in mobile scroll for cleaner card view */
+    }
+
+    /* Track Grid - still vertical stack */
+    .track-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .track-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* Extra Card Specifics for Mobile */
+    .extra-card {
+        min-height: 250px;
+        /* Increase height */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .extra-body {
+        flex-grow: 1;
+        /* Fill height */
+    }
+
+    /* Scroll Indicators */
+    .scroll-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    /* Scholarship Scenarios Table: Horizontal Slider */
+    .mobile-scroll-container {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+        border: 1px solid #eee;
+        /* Visual boundary */
+        border-radius: 8px;
+    }
+
+    .mobile-scroll-container table {
+        min-width: 600px;
+    }
+
+    /* Force Scrollbar visibility for UX */
+    .recruit-premium-grid::-webkit-scrollbar,
+    .curriculum-grid::-webkit-scrollbar,
+    .reviews-grid::-webkit-scrollbar,
+    .success-points-grid::-webkit-scrollbar,
+    .extra-grid::-webkit-scrollbar,
+    .stats-grid::-webkit-scrollbar,
+    .scholarship-structure::-webkit-scrollbar,
+    .mobile-scroll-container::-webkit-scrollbar {
+        height: 6px;
+        display: block;
+        /* Ensure visible */
+    }
+
+    .recruit-premium-grid::-webkit-scrollbar-thumb,
+    .curriculum-grid::-webkit-scrollbar-thumb,
+    .reviews-grid::-webkit-scrollbar-thumb,
+    .success-points-grid::-webkit-scrollbar-thumb,
+    .extra-grid::-webkit-scrollbar-thumb,
+    .stats-grid::-webkit-scrollbar-thumb,
+    .scholarship-structure::-webkit-scrollbar-thumb,
+    .mobile-scroll-container::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+    }
+
+    /* Fix Review alignment */
+    .review-quote {
+        text-align: left;
+        margin-left: 0;
+    }
+
+    .roadmap-container {
+        padding: 1.5rem 1rem;
+        width: 100%;
+    }
+}
+
+/* Ensure Header is always on top */
+header {
+    z-index: 9999 !important;
+}
+
+.nav-links {
+    z-index: 10000 !important;
+}
+
+.hamburger {
+    z-index: 10001 !important;
+}
+
+.body-overlay {
+    z-index: 9998 !important;
+}
+
+/* =========================================
+   Restored & Fixed Section Styles
+   ========================================= */
+
+/* =========================================
+   Refined Design Styles (Analysis Optimized)
+   ========================================= */
+
+/* 1. Identity Diagram (Intro Section - Attachment 1 & 2 Style) */
+.identity-diagram {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    /* Increased gap */
+    margin: 4rem 0;
+    flex-wrap: nowrap;
+    /* Keep horizontal on desktop */
+}
+
+/* Card Style for Identity Diagram */
+.id-card {
+    background: white;
+    padding: 2.5rem 1.5rem;
+    border-radius: 12px;
+    /* Smoother radius */
+    text-align: center;
+    width: 280px;
+    /* Slightly wider */
+    height: 320px;
+    /* Fixed height for consistency */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    /* Premium shadow */
+    border: 1px solid #eee;
+    transition: transform 0.3s ease;
+}
+
+.id-card:hover {
+    transform: translateY(-5px);
+}
+
+.highlight-card {
+    border: 2px solid #00bcd4;
+    /* Accent color border */
+    background: #e0f7fa;
+    /* Light cyan bg */
+}
+
+/* "Result" Card (Result of + operation) */
+.result-card {
+    background: #003366;
+    /* Deep navy */
+    color: white;
+    border: none;
+}
+
+.id-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.id-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: inherit;
+    /* Inherit from card color */
+}
+
+.id-desc {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.result-card .id-desc {
+    color: #ccc;
+}
+
+.id-plus,
+.id-arrow {
+    font-size: 2.5rem;
+    color: #aaa;
+    font-weight: 300;
+    /* Lighter weight */
+}
+
+/* Mobile Identity Diagram */
+@media (max-width: 768px) {
+    .identity-diagram {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .id-card {
+        width: 100%;
+        height: auto;
+        padding: 2rem;
+    }
+
+    .id-arrow {
+        transform: rotate(90deg);
+        /* Point down */
+    }
+}
+
+
+/* 2. Extra Section Design (Web & Mobile) */
+.extra-section {
+    margin-top: 5rem;
+}
+
+.extra-header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.extra-title {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.extra-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.partner-box {
+    display: inline-block;
+    background: #fff3e0;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    color: #e65100;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.extra-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.extra-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+    height: 100%;
+    /* Match height */
+}
+
+.extra-card:hover {
+    transform: translateY(-5px);
+}
+
+.extra-card-header {
+    background: #00897b;
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.extra-body {
+    padding: 1.5rem;
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+    background: #fff;
+    min-height: 120px;
+}
+
+
+/* 3. Stats Infographic (Reviews Section - Attachment 3 Style) */
+.stats-infographic-container {
+    padding: 5rem 2rem;
+    margin-top: 5rem;
+    background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+    /* Deeper Premium Navy */
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.stats-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 5rem;
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Gauge Circle Design */
+.stat-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    /* Create the gauge background using CSS gradient */
+    background: conic-gradient(var(--gauge-color, #4cd964) var(--gauge-value, 0%),
+            rgba(255, 255, 255, 0.1) 0%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    /* Animation could be added here */
+}
+
+/* Inner masking circle to make it a ring */
+.stat-circle::before {
+    content: '';
+    position: absolute;
+    width: 170px;
+    /* Thinner ring */
+    height: 170px;
+    background: #0a192f;
+    /* Match container bg */
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Value Text */
+.stat-value {
+    position: relative;
+    z-index: 2;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+}
+
+.stat-desc {
+    font-size: 1.3rem;
+    color: #a8b2d1;
+    /* Light steel blue */
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+/* Review Card Hook Styling */
+.reviewer-hook {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+    font-style: italic;
+    background: #f1f8e9;
+    padding: 0.5rem;
+    border-radius: 6px;
+    /* Keep it subtle */
+}
+
+.reviewer-info {
+    flex-grow: 1;
+    /* Allow it to push alignment */
+}
+
+.math-result {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #333;
+    margin-top: 0.5rem;
+}
+
+.total-amount {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #00bcd4;
+    /* Cyan accent */
+    margin-top: 0.5rem;
+}
+
+.math-plus,
+.math-equal {
+    font-size: 2.5rem;
+    color: #999;
+    font-weight: 700;
+}
+
+/* Mobile Tweaks for Math Box */
+@media (max-width: 768px) {
+    .math-box {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .math-term,
+    .term-dark {
+        width: 100%;
+        height: auto;
+        padding: 2rem;
+    }
+
+    .math-plus,
+    .math-equal {
+        transform: rotate(90deg);
+    }
+}
+
+/* 5. Refined Extra Grid Style (Attachment 2 - "Target" Style) */
+.extra-section .container {
+    max-width: 1200px;
+    /* Reset width to standard */
+}
+
+.extra-grid {
+    display: flex;
+    justify-content: center;
+    /* Center the 3 items */
+    gap: 1.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+/* 6. Refined Guide Section (Full Width Bar Style) */
+.guide-section {
+    background: #e3f2fd;
+    /* Light Blue Background */
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    margin: 5rem auto 0;
+    /* Center with margin */
+    max-width: 800px;
+    /* Reduced width */
+    width: 100%;
+}
+
+.guide-qa {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.qa-box {
+    background: white;
+    /* White bars on blue bg */
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.qa-box strong {
+    font-size: 1.1rem;
+    color: #003366;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.qa-box p {
+    font-size: 1rem;
+    color: #555;
+    margin: 0;
+}
+
+/* 7. Refined Extra Grid (No Icon, Compact) */
+.extra-card {
+    background: #e3f2fd;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    /* Reduced padding */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    /* Allow auto height */
+    min-height: 200px;
+    /* Reduced min-height */
+    width: 300px;
+    box-shadow: none;
+    border: none;
+    transition: transform 0.3s;
+}
+
+/* Remove Icon Display */
+.extra-icon {
+    display: none !important;
+}
+
+.extra-card-header {
+    background: transparent !important;
+    padding: 0;
+    margin-bottom: 1rem;
+    /* Reduced margin */
+}
+
+.extra-name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #003366;
+    /* Stronger color without icon */
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.extra-body {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* Mobile Tweaks for Extra Grid */
+@media (max-width: 768px) {
+    .extra-grid {
+        grid-template-columns: 1fr;
+        /* Stack vertically on mobile? Or slider */
+        /* If original request (Step 208) asked for vertical stack, keep it. 
+           But 'Slider' is usually better for cards. Let's make it a slider as per trend. */
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1rem;
+    }
+
+    .extra-card {
+        min-width: 280px;
+        scroll-snap-align: center;
+        flex-shrink: 0;
+        margin-right: 1rem;
+        min-height: 280px;
+    }
+}
