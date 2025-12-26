@@ -1650,6 +1650,129 @@ header {
         font-size: 1.8rem;
     }
 
+    /* Fix Header Logo Readability on Mobile */
+    .logo-text {
+        font-size: 0.85rem !important;
+        line-height: 1.35 !important;
+        word-break: keep-all !important;
+        text-align: left;
+        display: block;
+        width: 170px;
+        /* Force strict width for clean 2-line wrap */
+    }
+
+    .logo-link {
+        align-items: center;
+        max-width: 65%;
+    }
+
+    /* Fix Recruit Card Height Equality */
+    .recruit-premium-grid {
+        align-items: stretch;
+    }
+
+    .recruit-premium-card {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 380px;
+    }
+
+    .premium-card-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify: flex-start;
+    }
+
+    /* Calendar Icon Fix - Restore icons but Custom Style the First One (Calendar) */
+    .card-icon-box {
+        display: block;
+        /* Restore visibility for others (Money, User) */
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Target only the First Card (Recruit Overview - Calendar) */
+    .card-accent-1 .card-icon-box {
+        color: transparent;
+        /* Hide the emoji */
+        position: relative;
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 1.5rem;
+    }
+
+    /* Body of Calendar (Light Purple with Dots) */
+    .card-accent-1 .card-icon-box::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 75%;
+        /* Body height */
+        background: #ede7f6;
+        /* Very Light Purple bg */
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        visibility: visible;
+
+        /* Create Grid dots using radial gradient - mimicking the grid in screenshot */
+        background-image: radial-gradient(#b39ddb 25%, transparent 25%);
+        background-position: 8px 8px;
+        /* Offset */
+        background-size: 16px 16px;
+        /* Spacing */
+    }
+
+    /* Header of Calendar (Blue) */
+    .card-accent-1 .card-icon-box::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 25%;
+        /* Header height */
+        background: #42a5f5;
+        /* Bright Blue Header */
+        border-radius: 12px 12px 0 0;
+        visibility: visible;
+        z-index: 2;
+    }
+
+    /* Fix Header Logo Readability on Mobile - Using correct class .logo */
+    .logo {
+        font-size: 1rem !important;
+        /* Reduced size for Top Line (Chungnam RISE...) */
+        font-weight: 800 !important;
+        /* Bold */
+        line-height: 1.3 !important;
+        text-align: left;
+        display: inline-block;
+        max-width: 65vw;
+        white-space: normal;
+        word-break: keep-all;
+    }
+
+    .logo span {
+        font-size: 0.85em !important;
+        /* Smaller than top line */
+        font-weight: 500 !important;
+        /* Lighter weight */
+        display: block;
+        /* Ensure it sits on next line cleanly */
+        color: #555;
+        /* Optional: slightly lighter color for hierarchy if accepted, else keep inherit */
+    }
+
+    .logo-link {
+        align-items: center;
+        max-width: 70%;
+    }
+
     .main-catchphrase {
         font-size: 1.5rem;
         line-height: 1.4;
@@ -2275,14 +2398,18 @@ header {
 /* Mobile Tweaks for Extra Grid */
 @media (max-width: 768px) {
     .extra-grid {
-        grid-template-columns: 1fr;
-        /* Stack vertically on mobile? Or slider */
-        /* If original request (Step 208) asked for vertical stack, keep it. 
-           But 'Slider' is usually better for cards. Let's make it a slider as per trend. */
         display: flex;
+        flex-wrap: nowrap !important;
+        /* Force single row for scrolling */
+        justify-content: flex-start !important;
+        /* Align start to allow scroll from beginning */
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         padding-bottom: 1rem;
+        gap: 1rem;
+        /* Use gap instead of margin if supported, cleaner */
+        grid-template-columns: none;
+        /* Reset grid if it was grid */
     }
 
     .extra-card {
@@ -2291,5 +2418,67 @@ header {
         flex-shrink: 0;
         margin-right: 1rem;
         min-height: 280px;
+    }
+
+    /* Fix Scholarship Structure Horizontal Scroll on Mobile */
+    .scholarship-structure {
+        display: flex;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1rem;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .sch-box {
+        min-width: 260px;
+        /* Fixed width to force scroll */
+        flex-shrink: 0;
+        scroll-snap-align: center;
+        margin-bottom: 0;
+        /* Remove potential bottom margin from stacking */
+    }
+
+    .sch-plus,
+    .sch-equal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+        font-size: 1.5rem;
+    }
+
+    /* Fix Reviews Grid Horizontal Scroll on Mobile */
+    /* User reported box stretching sideways prevents reading full text. 
+       We need to constrain width to force text wrapping (vertical growth). */
+    .reviews-grid {
+        display: flex;
+        /* Turn grid into flex row */
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        padding-bottom: 2rem;
+        grid-template-columns: none;
+    }
+
+    .review-card {
+        min-width: 85vw;
+        /* Set fixed width relative to viewport */
+        width: 85vw;
+        max-width: 400px;
+        /* Optional cap */
+        flex-shrink: 0;
+        scroll-snap-align: center;
+        white-space: normal;
+        /* Ensure text wraps */
+        height: auto;
+        /* Allow automatic height based on content */
+        overflow: visible;
+        /* Don't cut off text */
     }
 }
